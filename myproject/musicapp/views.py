@@ -20,3 +20,8 @@ class SongList(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def get_by_id(self, request):
+        song = Song.object.get(pk=request.data)
+        if song.is_valid():
+            return 
